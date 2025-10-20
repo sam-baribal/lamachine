@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://b67apdibpmgvg"]
+
+[ext_resource type="Script" uid="uid://qstysicunasj" path="res://scripts/input_block.gd" id="1_qk4tj"]
+[ext_resource type="Texture2D" uid="uid://c1n83hw8aqf1t" path="res://icon.svg" id="2_lwi6x"]
+[ext_resource type="FontFile" uid="uid://b2a6jipd0ulol" path="res://fonts/Fragmentcore.otf" id="3_8er7w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyxlr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8j2gm"]
+
+[node name="InputBlock" type="Node2D"]
+script = ExtResource("1_qk4tj")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_lwi6x")
+
+[node name="Area2DValue" type="Area2D" parent="."]
+position = Vector2(-45, -45)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DValue"]
+position = Vector2(45, 45)
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_hyxlr")
+
+[node name="TextBackground" type="ColorRect" parent="Area2DValue"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 90.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+color = Color(0.466667, 0.466667, 0.466667, 1)
+
+[node name="TextZone" type="Label" parent="Area2DValue"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 89.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
+theme_override_fonts/font = ExtResource("3_8er7w")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2DOutput" type="Area2D" parent="."]
+position = Vector2(65, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DOutput"]
+position = Vector2(15, 0)
+scale = Vector2(2, 6)
+shape = SubResource("RectangleShape2D_8j2gm")
+
+[node name="ColorRect" type="ColorRect" parent="Area2DOutput"]
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="mouse_entered" from="Area2DValue" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2DValue" to="." method="_on_area_2d_mouse_exited"]

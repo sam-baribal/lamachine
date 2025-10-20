@@ -1,0 +1,115 @@
+[gd_scene load_steps=5 format=3 uid="uid://be8nn3jq6x7ir"]
+
+[ext_resource type="Script" uid="uid://t4eyfb3d4tc6" path="res://scripts/output_block.gd" id="1_h1v6j"]
+[ext_resource type="Texture2D" uid="uid://c1n83hw8aqf1t" path="res://icon.svg" id="2_26614"]
+[ext_resource type="FontFile" uid="uid://b2a6jipd0ulol" path="res://fonts/Fragmentcore.otf" id="3_weijp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7gpde"]
+
+[node name="OutputBlock" type="Node2D"]
+script = ExtResource("1_h1v6j")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(2, 1)
+texture = ExtResource("2_26614")
+
+[node name="TextBackgroundIn" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -45.0
+offset_right = -15.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+color = Color(0.466667, 0.466667, 0.466667, 1)
+
+[node name="TextZoneIn" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -44.0
+offset_right = -16.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
+theme_override_fonts/font = ExtResource("3_weijp")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextBackgroundExpected" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -45.0
+offset_right = 105.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+color = Color(0.466667, 0.466667, 0.466667, 1)
+
+[node name="TextZoneExpected" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -44.0
+offset_right = 104.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
+theme_override_fonts/font = ExtResource("3_weijp")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Attention" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -133)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_26614")
+
+[node name="Coche" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -133)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_26614")
+
+[node name="Area2DInput" type="Area2D" parent="."]
+position = Vector2(-124, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DInput"]
+position = Vector2(-15, 0)
+scale = Vector2(2, 6)
+shape = SubResource("RectangleShape2D_7gpde")
+
+[node name="ColorRect" type="ColorRect" parent="Area2DInput"]
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="input_event" from="Area2DInput" to="." method="_on_area_2d_input_input_event"]

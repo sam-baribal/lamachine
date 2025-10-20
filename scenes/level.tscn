@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6rp16gdnr4hy"]
+
+[ext_resource type="Script" uid="uid://ddouwjdp6afav" path="res://scripts/level.gd" id="1_w7c3h"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_w7c3h")
+metadata/_edit_vertical_guides_ = [150.0]
+metadata/_edit_horizontal_guides_ = [126.0]

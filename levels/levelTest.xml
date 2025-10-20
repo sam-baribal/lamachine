@@ -1,0 +1,16 @@
+<blocks>
+	<block type="input" quantity="3"></block>
+	<block type="process" quantity="1"></block>
+	<block type="process2" quantity="2"></block>
+</blocks>
+<parameters>
+	<parameter value="7"></parameter>
+	<parameter value="-"></parameter>
+	<parameter value="x²"></parameter>
+	<parameter value="2"></parameter>
+	<parameter value="8"></parameter>
+	<parameter value="+"></parameter>
+</parameters>
+<outputValues>
+	<outputValue value="3"></outputValue>
+</outputValues>
