@@ -15,6 +15,7 @@ var block_quantities = {
 
 var parameters = []
 var expected_values = []
+var item_stack = []	# all the items that can be picked up, ranked by "height", so that when two objects are hovered by the mouse, only the "highest" gets picked up
 
 var input_block_scene = preload("res://scenes/input_block.tscn")
 var process_block_scene = preload("res://scenes/process_block.tscn")
@@ -27,6 +28,8 @@ var grabbed_value = ""
 var output_count = 0
 var good_answer_curr_count = 0
 var block_count = 0
+
+
 
 func _init():
 	XML_doc_parse()
@@ -41,7 +44,7 @@ func _ready() :
 
 func XML_doc_parse():
 	var parser = XMLParser.new()
-	parser.open("res://levelTest.xml")
+	parser.open("res://levels/levelTest.xml")
 	while parser.read() != ERR_FILE_EOF:
 		if parser.get_node_type() == XMLParser.NODE_ELEMENT:
 			var node_name = parser.get_node_name()
@@ -69,6 +72,7 @@ func block_placing():
 		block.set_global_position(Vector2(150, 125 + i*150))
 		block.set_global_scale(Vector2(0.8,0.8))
 		block.id = block_count
+		item_stack.append(block)
 		block_count += 1
 		
 	for i in range(block_quantities["process"]):
@@ -77,6 +81,7 @@ func block_placing():
 		block.set_global_position(Vector2(400, 125 + i*150))
 		block.set_global_scale(Vector2(0.8,0.8))
 		block.id = block_count
+		item_stack.append(block)
 		block_count += 1
 		
 	for i in range(block_quantities["process2"]):
@@ -85,6 +90,7 @@ func block_placing():
 		block.set_global_position(Vector2(650, 125 + i*150))
 		block.set_global_scale(Vector2(0.8,0.8))
 		block.id = block_count
+		item_stack.append(block)
 		block_count += 1
 		
 	for i in range(block_quantities["output"]):
@@ -95,6 +101,7 @@ func block_placing():
 		block.id = block_count
 		block.good_answer.connect(on_output_good_answer)
 		block.wrong_answer.connect(on_output_wrong_answer)
+		item_stack.append(block)
 		block_count += 1
 
 func parameter_placing():
@@ -106,12 +113,31 @@ func parameter_placing():
 		var parameter = parameter_scene.instantiate()
 		params.add_child(parameter, true)
 		parameter.set_global_position(Vector2(150 + i*150, 550))
-		parameter.id = i
+		parameter.id = i + block_count
 		parameter.get_child(2).mouse_entered.connect(on_parameter_input_event)
+		item_stack.append(parameter)
+
+func is_highest_hovered_item(hovered_item):
+	for item in item_stack:
+		if item == hovered_item:
+			return true
+		if item.is_hovered:
+			return false
+	return true
+	
+func click_item(clicked_item):
+	var index = -1
+	for i in range(item_stack.size()):
+		if clicked_item == item_stack[i]:
+			index = i
+			continue
+	item_stack.pop_at(index)
+	item_stack.push_front(clicked_item)
+	$Parameters.move_child(clicked_item, -1)
 
 func parameter_set():
 	for i in range(parameters.size()):
-		parameter_value_set.emit(parameters[i], i)
+		parameter_value_set.emit(parameters[i], i + block_count)
 
 func on_output_good_answer():
 	++good_answer_curr_count

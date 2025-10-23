@@ -1,6 +1,6 @@
 extends Node2D
 
-var id = 0
+var id = -1
 
 var type = ""
 var value = ""
@@ -15,8 +15,9 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton :
 		if event.button_index == 1 :
-			if event.pressed && is_hovered :
+			if event.pressed && is_hovered && $"/root/Level".is_highest_hovered_item(self):
 				is_clicked = true
+				$"/root/Level".click_item(self)
 			elif !event.pressed :
 				is_clicked = false
 	if event is InputEventMouseMotion && is_clicked :
