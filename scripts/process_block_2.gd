@@ -1,8 +1,8 @@
 extends Node2D
 
-var id = 0
+var id = -1
 
-var TwoInputOperation = {"ADDITION" : "+",
+static var TwoInputOperation = {"ADDITION" : "+",
 						"SUBSTRACTION" : "-",
 						"MULTIPLICATION" : "×",
 						"DIVISION" : "÷"}

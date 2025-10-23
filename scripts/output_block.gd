@@ -3,10 +3,12 @@ extends Node2D
 signal good_answer
 signal wrong_answer
 
-var id = 0
+var id = -1
 
 var input = ""
 var expected_value = ""
+
+var is_hovered = false
 
 func _ready() -> void:
 	var root = $"../../"

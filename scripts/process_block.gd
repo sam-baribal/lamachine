@@ -1,8 +1,8 @@
 extends Node2D
 
-var id = 0
+var id = -1
 
-var OneInputOperation = {"POW_2" : "x²"}
+static var OneInputOperation = {"POW_2" : "x²"}
 
 var input = ""
 var operation = ""

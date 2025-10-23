@@ -2,12 +2,12 @@ extends Node2D
 
 enum BlockType {NONE, INPUT, PROCESS, PROCESS2, OUTPUT}
 
-var id = 0
+var id = -1
 var block_type = BlockType.NONE
 
-var OneInputOperation = {"POW_2" : "x²"}
+static var OneInputOperation = {"POW_2" : "x²"}
 
-var TwoInputOperation = {"ADDITION" : "+",
+static var TwoInputOperation = {"ADDITION" : "+",
 						"SUBSTRACTION" : "-",
 						"MULTIPLICATION" : "×",
 						"DIVISION" : "÷"}
