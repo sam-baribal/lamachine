@@ -35,9 +35,7 @@ func _on_parameter_value_set(new_val, param_id):
 			$TextBackground.set_color(Color(0.243, 0.686, 1.0))
 
 func _on_area_2d_mouse_entered() -> void:
-	print("in")
 	is_hovered = true
 
 func _on_area_2d_mouse_exited() -> void:
-	print("out")
 	is_hovered = false
