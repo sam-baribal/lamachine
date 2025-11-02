@@ -135,6 +135,28 @@ func click_item(clicked_item):
 	item_stack.push_front(clicked_item)
 	$Parameters.move_child(clicked_item, -1)
 
+func release_clicked_parameter(value):
+	# list all hovered blocks
+	var hovered_items = []
+	for i in range(item_stack.size()):
+		if item_stack[i].id < block_count && item_stack[i].is_hovered:
+			hovered_items.append(item_stack[i])
+	
+	# save the highest one
+	var highest_hovered_item
+	if hovered_items.size() > 1:
+		for i in range(item_stack.size()):
+			for j in range(hovered_items.size()):
+				if item_stack[i] == hovered_items[j]:
+					highest_hovered_item = hovered_items[j]
+	elif hovered_items.size() == 1:
+		highest_hovered_item = hovered_items[0]
+	else:
+		return
+	
+	# send value change signal to item
+	value_change.emit(value, highest_hovered_item.id)
+
 func parameter_set():
 	for i in range(parameters.size()):
 		parameter_value_set.emit(parameters[i], i + block_count)

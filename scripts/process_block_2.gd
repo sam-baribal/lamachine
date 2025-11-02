@@ -20,9 +20,11 @@ func _ready() -> void:
 	var root = $"/root/Level"
 	root.value_change.connect(_on_value_change)
 	root.input_change.connect(_on_input_change)
+	result_process()
 
 func result_process():
 	if (input1 != "" && input2 != ""):
+		$TextBackgroundResult.set_color(Color("#fffbe5"))
 		match operation:
 			TwoInputOperation.ADDITION:
 				result = str(input1.to_float() + input2.to_float())
@@ -33,18 +35,19 @@ func result_process():
 			TwoInputOperation.DIVISION:
 				result = str(input1.to_float() / input2.to_float())
 	else :
+		$TextBackgroundResult.set_color(Color("#303030"))
 		result = ""
-	get_node("TextZoneResult").set_text(result)
+	$TextZoneResult.set_text(result)
 
 func _on_value_change (new_val, block_id):
 	if id == block_id:
 		if is_hovered && new_val in TwoInputOperation.values():
 			operation = new_val
-			get_node("Area2DOperation/TextZoneOperation").set_text(operation)
+			$Area2DOperation/TextZoneOperation.set_text(operation)
 			if operation == "":
-				get_node("Area2DOperation/textBackgroundOperation").set_color(Color("777777"))
+				$Area2DOperation/TextBackgroundOperation.set_color(Color("777777"))
 			else :
-				get_node("Area2DOperation/textBackgroundOperation").set_color(Color("FFFFFF"))
+				$Area2DOperation/TextBackgroundOperation.set_color(Color("#fffbe5"))
 				result_process()
 
 func _on_input_change (new_input, block_id, input_id):

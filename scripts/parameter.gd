@@ -18,8 +18,9 @@ func _input(event: InputEvent) -> void:
 			if event.pressed && is_hovered && $"/root/Level".is_highest_hovered_item(self):
 				is_clicked = true
 				$"/root/Level".click_item(self)
-			elif !event.pressed :
+			elif is_clicked && !event.pressed:
 				is_clicked = false
+				$"/root/Level".release_clicked_parameter(value)
 	if event is InputEventMouseMotion && is_clicked :
 		position += event.relative
 
