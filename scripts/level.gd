@@ -156,6 +156,16 @@ func release_clicked_parameter(value):
 	
 	# send value change signal to item
 	value_change.emit(value, highest_hovered_item.id)
+	var item = get_item_from_value(value)
+	if item :
+		item.visible = false
+
+func get_item_from_value(value):
+	for i in range(item_stack.size()):
+		var textZone = item_stack[i].get_node("TextZone")
+		if textZone && value == textZone.get_text():
+			return item_stack[i]
+	return null
 
 func parameter_set():
 	for i in range(parameters.size()):

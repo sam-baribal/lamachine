@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b67apdibpmgvg"]
+[gd_scene format=3 uid="uid://b67apdibpmgvg"]
 
 [ext_resource type="Script" uid="uid://qstysicunasj" path="res://scripts/input_block.gd" id="1_qk4tj"]
 [ext_resource type="Texture2D" uid="uid://c1n83hw8aqf1t" path="res://icon.svg" id="2_lwi6x"]
@@ -8,22 +8,22 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8j2gm"]
 
-[node name="InputBlock" type="Node2D"]
+[node name="InputBlock" type="Node2D" unique_id=1014195961]
 script = ExtResource("1_qk4tj")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=501809935]
 texture = ExtResource("2_lwi6x")
 
-[node name="Area2DValue" type="Area2D" parent="."]
+[node name="Area2DValue" type="Area2D" parent="." unique_id=312710753]
 position = Vector2(-45, -45)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DValue"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DValue" unique_id=625910842]
 position = Vector2(45, 45)
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_hyxlr")
 
-[node name="TextBackground" type="ColorRect" parent="Area2DValue"]
+[node name="TextBackground" type="ColorRect" parent="Area2DValue" unique_id=1120212233]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -37,7 +37,7 @@ size_flags_horizontal = 0
 mouse_filter = 2
 color = Color(0.466667, 0.466667, 0.466667, 1)
 
-[node name="TextZone" type="Label" parent="Area2DValue"]
+[node name="TextZone" type="Label" parent="Area2DValue" unique_id=761181504]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -56,16 +56,16 @@ theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Area2DOutput" type="Area2D" parent="."]
+[node name="Area2DOutput" type="Area2D" parent="." unique_id=825305223]
 position = Vector2(65, 0)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DOutput"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DOutput" unique_id=2136766069]
 position = Vector2(15, 0)
 scale = Vector2(2, 6)
 shape = SubResource("RectangleShape2D_8j2gm")
 
-[node name="ColorRect" type="ColorRect" parent="Area2DOutput"]
+[node name="ColorRect" type="ColorRect" parent="Area2DOutput" unique_id=451403033]
 offset_left = -3.0
 offset_top = -3.0
 offset_right = 3.0

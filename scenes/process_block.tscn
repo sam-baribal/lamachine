@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxiwr33t2igqc"]
+[gd_scene format=3 uid="uid://cxiwr33t2igqc"]
 
 [ext_resource type="Script" uid="uid://w01e1mdyaya2" path="res://scripts/process_block.gd" id="1_8dx47"]
 [ext_resource type="Texture2D" uid="uid://c1n83hw8aqf1t" path="res://icon.svg" id="2_fswsb"]
@@ -8,22 +8,22 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifmnp"]
 
-[node name="ProcessBlock" type="Node2D"]
+[node name="ProcessBlock" type="Node2D" unique_id=1644395733]
 script = ExtResource("1_8dx47")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2034491024]
 scale = Vector2(2, 1)
 texture = ExtResource("2_fswsb")
 
-[node name="Area2DOperation" type="Area2D" parent="."]
+[node name="Area2DValue" type="Area2D" parent="." unique_id=744864810]
 position = Vector2(-60, 0)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2DOperation" type="CollisionShape2D" parent="Area2DOperation"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DValue" unique_id=910074805]
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_koy45")
 
-[node name="TextBackgroundOperation" type="ColorRect" parent="Area2DOperation"]
+[node name="TextBackground" type="ColorRect" parent="Area2DValue" unique_id=1947470023]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -39,7 +39,7 @@ size_flags_horizontal = 0
 mouse_filter = 2
 color = Color(0.466667, 0.466667, 0.466667, 1)
 
-[node name="TextZoneOperation" type="Label" parent="Area2DOperation"]
+[node name="TextZone" type="Label" parent="Area2DValue" unique_id=1461312075]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -58,7 +58,7 @@ theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextBackgroundResult" type="ColorRect" parent="."]
+[node name="TextBackgroundResult" type="ColorRect" parent="." unique_id=2011432921]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -74,7 +74,7 @@ size_flags_horizontal = 0
 mouse_filter = 2
 color = Color(0.466667, 0.466667, 0.466667, 1)
 
-[node name="TextZoneResult" type="Label" parent="."]
+[node name="TextZoneResult" type="Label" parent="." unique_id=1892491454]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -93,16 +93,16 @@ theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Area2DInput" type="Area2D" parent="."]
+[node name="Area2DInput" type="Area2D" parent="." unique_id=772338121]
 position = Vector2(-125, 0)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DInput"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DInput" unique_id=2122940503]
 position = Vector2(-15, 0)
 scale = Vector2(2, 6)
 shape = SubResource("RectangleShape2D_ifmnp")
 
-[node name="ColorRect" type="ColorRect" parent="Area2DInput"]
+[node name="ColorRect" type="ColorRect" parent="Area2DInput" unique_id=741971388]
 offset_left = -3.0
 offset_top = -3.0
 offset_right = 3.0
@@ -110,16 +110,16 @@ offset_bottom = 3.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Area2DOutput" type="Area2D" parent="."]
+[node name="Area2DOutput" type="Area2D" parent="." unique_id=1886964473]
 position = Vector2(125, 0)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DOutput"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DOutput" unique_id=160899064]
 position = Vector2(15, 0)
 scale = Vector2(2, 6)
 shape = SubResource("RectangleShape2D_ifmnp")
 
-[node name="ColorRect" type="ColorRect" parent="Area2DOutput"]
+[node name="ColorRect" type="ColorRect" parent="Area2DOutput" unique_id=250911379]
 offset_left = -3.0
 offset_top = -3.0
 offset_right = 3.0
@@ -127,5 +127,5 @@ offset_bottom = 3.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[connection signal="mouse_entered" from="Area2DOperation" to="." method="_on_area_2d_operation_mouse_entered"]
-[connection signal="mouse_exited" from="Area2DOperation" to="." method="_on_area_2d_operation_mouse_exited"]
+[connection signal="mouse_entered" from="Area2DValue" to="." method="_on_area_2d_operation_mouse_entered"]
+[connection signal="mouse_exited" from="Area2DValue" to="." method="_on_area_2d_operation_mouse_exited"]

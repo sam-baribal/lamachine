@@ -26,11 +26,11 @@ func _on_value_change (new_val, block_id):
 	if id == block_id:
 		if is_hovered && new_val in OneInputOperation.values():
 			operation = new_val
-			$Area2DOperation/TextZoneOperation.set_text(operation)
+			$Area2DValue/TextZone.set_text(operation)
 			if operation == "":
-				$Area2DOperation/TextBackgroundOperation.set_color(Color("777777"))
+				$Area2DValue/TextBackground.set_color(Color("777777"))
 			else :
-				$Area2DOperation/TextBackgroundOperation.set_color(Color("#fffbe5"))
+				$Area2DValue/TextBackground.set_color(Color("#fffbe5"))
 				result_process()
 
 func _on_input_change (new_input, block_id, input_id):

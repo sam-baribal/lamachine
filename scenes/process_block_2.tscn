@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://clk7xrcwi1abu"]
+[gd_scene format=3 uid="uid://clk7xrcwi1abu"]
 
 [ext_resource type="Script" uid="uid://55gn0c2v7eef" path="res://scripts/process_block_2.gd" id="1_qujne"]
 [ext_resource type="Texture2D" uid="uid://c1n83hw8aqf1t" path="res://icon.svg" id="2_lu0rj"]
@@ -8,22 +8,22 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifmnp"]
 
-[node name="ProcessBlock2" type="Node2D"]
+[node name="ProcessBlock2" type="Node2D" unique_id=721930880]
 script = ExtResource("1_qujne")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1610239649]
 scale = Vector2(2, 1)
 texture = ExtResource("2_lu0rj")
 
-[node name="Area2DOperation" type="Area2D" parent="."]
+[node name="Area2DValue" type="Area2D" parent="." unique_id=1912591448]
 position = Vector2(-60, 0)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2DOperation" type="CollisionShape2D" parent="Area2DOperation"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DValue" unique_id=1542304277]
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_koy45")
 
-[node name="TextBackgroundOperation" type="ColorRect" parent="Area2DOperation"]
+[node name="TextBackground" type="ColorRect" parent="Area2DValue" unique_id=1712164287]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -39,7 +39,7 @@ size_flags_horizontal = 0
 mouse_filter = 2
 color = Color(0.466667, 0.466667, 0.466667, 1)
 
-[node name="TextZoneOperation" type="Label" parent="Area2DOperation"]
+[node name="TextZone" type="Label" parent="Area2DValue" unique_id=77348651]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -58,7 +58,7 @@ theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextBackgroundResult" type="ColorRect" parent="."]
+[node name="TextBackgroundResult" type="ColorRect" parent="." unique_id=586444093]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -74,7 +74,7 @@ size_flags_horizontal = 0
 mouse_filter = 2
 color = Color(0.466667, 0.466667, 0.466667, 1)
 
-[node name="TextZoneResult" type="Label" parent="."]
+[node name="TextZoneResult" type="Label" parent="." unique_id=677258011]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -93,16 +93,16 @@ theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Area2DInput1" type="Area2D" parent="."]
+[node name="Area2DInput1" type="Area2D" parent="." unique_id=735124112]
 position = Vector2(-125, -30)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DInput1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DInput1" unique_id=1634647326]
 position = Vector2(-15, 0)
 scale = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_ifmnp")
 
-[node name="ColorRect" type="ColorRect" parent="Area2DInput1"]
+[node name="ColorRect" type="ColorRect" parent="Area2DInput1" unique_id=1400229211]
 offset_left = -3.0
 offset_top = -3.0
 offset_right = 3.0
@@ -110,16 +110,16 @@ offset_bottom = 3.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Area2DInput2" type="Area2D" parent="."]
+[node name="Area2DInput2" type="Area2D" parent="." unique_id=87422511]
 position = Vector2(-125, 30)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DInput2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DInput2" unique_id=888425552]
 position = Vector2(-15, 0)
 scale = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_ifmnp")
 
-[node name="ColorRect" type="ColorRect" parent="Area2DInput2"]
+[node name="ColorRect" type="ColorRect" parent="Area2DInput2" unique_id=470577916]
 offset_left = -3.0
 offset_top = -3.0
 offset_right = 3.0
@@ -127,16 +127,16 @@ offset_bottom = 3.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Area2DOutput" type="Area2D" parent="."]
+[node name="Area2DOutput" type="Area2D" parent="." unique_id=644992136]
 position = Vector2(125, 0)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DOutput"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DOutput" unique_id=2083300559]
 position = Vector2(15, 0)
 scale = Vector2(2, 6)
 shape = SubResource("RectangleShape2D_ifmnp")
 
-[node name="ColorRect" type="ColorRect" parent="Area2DOutput"]
+[node name="ColorRect" type="ColorRect" parent="Area2DOutput" unique_id=1509581306]
 offset_left = -3.0
 offset_top = -3.0
 offset_right = 3.0
@@ -144,8 +144,8 @@ offset_bottom = 3.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[connection signal="mouse_entered" from="Area2DOperation" to="." method="_on_area_2d_operation_mouse_entered"]
-[connection signal="mouse_exited" from="Area2DOperation" to="." method="_on_area_2d_operation_mouse_exited"]
+[connection signal="mouse_entered" from="Area2DValue" to="." method="_on_area_2d_operation_mouse_entered"]
+[connection signal="mouse_exited" from="Area2DValue" to="." method="_on_area_2d_operation_mouse_exited"]
 [connection signal="mouse_entered" from="Area2DInput1" to="." method="_on_area_2d_input_1_mouse_entered"]
 [connection signal="mouse_exited" from="Area2DInput1" to="." method="_on_area_2d_input_1_mouse_exited"]
 [connection signal="mouse_entered" from="Area2DInput2" to="." method="_on_area_2d_input_2_mouse_entered"]
